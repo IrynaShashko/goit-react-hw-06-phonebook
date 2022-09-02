@@ -15,9 +15,7 @@ const App = () => {
     setContacts(prevState => [...prevState, { name, number }]);
   };
   const deleteContact = id => {
-    console.log(id);
     setContacts(contacts.filter(contact => contact.id !== id));
-    // setContacts(contacts.filter(contact => contact.id !== id));
   };
   const handleChange = e => {
     setSearch(e.target.value);

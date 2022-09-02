@@ -20,7 +20,7 @@ export const ContactsItem = styled.li`
   background-color: #d37fae;
   box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.75);
   &:hover {
-    scale: 1.05;
+    scale: 1.01;
   }
 `;
 export const ContactsContainer = styled.div`
