@@ -12,9 +12,10 @@ export const AppContainer = styled.div`
 export const PhonebookContainer = styled.div`
   margin 0 auto;
   padding: 30px;
+  width: 400px;
   border: 1px solid #ccc;
   border-radius: 50px;
-  background-image: linear-gradient(to bottom, #d37fae, #c585bb, #b68bc4, #a591ca, #9596cd, #8e92c5, #878dbd, #8189b5, #7e7ca4, #7a6f93, #746382, #6c5771);
+  background-image: linear-gradient(to bottom, #f9c0e1, #ffbfcd, #ffc3b4, #ffce9b, #ffdd8c, #fbe584, #f4ee7d, #eaf779, #dbf776, #caf875, #b8f876, #a5f878);
   box-shadow: 0px 4px 5px 4px rgba(0, 0, 0, 0.75);
 `;
 

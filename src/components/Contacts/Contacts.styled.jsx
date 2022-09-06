@@ -11,13 +11,13 @@ export const ContactsItem = styled.li`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  width: 200px;
+  width: 300px;
   padding: 10px;
   margin: 0 auto;
   margin-bottom: 10px;
   border: 1px solid #fff;
   border-radius: 50px;
-  background-color: #d37fae;
+  background-color: #f9c0e1;
   box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.75);
   &:hover {
     scale: 1.01;
@@ -25,18 +25,19 @@ export const ContactsItem = styled.li`
 `;
 export const ContactsContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
 `;
 export const ContactsName = styled.p`
   font-size: 16px;
-  margin: 0 auto;
+  margin: 0 20px;
   align-items: center;
 `;
 export const ContactsNumber = styled.p`
   font-size: 14px;
   margin: 0;
+  margin-left: auto;
 `;
 export const ContactsItemButton = styled.button`
   display: flex;
@@ -51,4 +52,5 @@ export const ContactsItemButton = styled.button`
   cursor: pointer;
   box-shadow: 0px 2px 2px 2px rgba(0, 0, 0, 0.75);
   background-color: #000;
+  margin-left: 20px;
 `;

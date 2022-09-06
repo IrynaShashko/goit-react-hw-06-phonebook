@@ -1,51 +1,43 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { AppContainer, H1, H2, PhonebookContainer } from '../App/App.styled';
 import ContactsForm from '../Phonebook/Phonebook';
 import Filter from 'components/Filter/Filter';
 import Contacts from 'components/Contacts/Contacts';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { addContact, removeContact } from 'redux/contacts/contacts-slice';
+import { filterContact } from 'redux/filter/filter-slice';
+import { getFilterContacts } from 'redux/contacts/contacts-selectors';
+import { getFilter } from 'redux/filter/filter-selectors';
 
 const App = () => {
-  const [contacts, setContacts] = useState(() => {
-    return JSON.parse(window.localStorage.getItem('contacts')) ?? [];
-  });
-  const [search, setSearch] = useState('');
+  const contacts = useSelector(getFilterContacts);
+  const filter = useSelector(getFilter);
 
-  const formSumbit = (name, number) => {
-    setContacts(prevState => [...prevState, { name, number }]);
-  };
-  const deleteContact = id => {
-    setContacts(contacts.filter(contact => contact.id !== id));
-  };
-  const handleChange = e => {
-    setSearch(e.target.value);
+  const dispatch = useDispatch();
+
+  const onAddContact = payload => {
+    const action = addContact(payload);
+    dispatch(action);
   };
 
-  useEffect(() => {
-    const contact = window.localStorage.getItem('contacts');
-    const parsedContact = JSON.parse(contact) || [];
-    setContacts(parsedContact);
-  }, []);
+  const onRemoveContact = payload => {
+    dispatch(removeContact(payload));
+  };
 
-  useEffect(() => {
-    window.localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
-
-  const normalizedContacts = search.toLowerCase();
-  const visibleContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(normalizedContacts)
-  );
+  const onFilterContact = ({ target }) => {
+    dispatch(filterContact(target.value));
+  };
 
   return (
     <AppContainer>
       <PhonebookContainer>
         <H1>Phonebook</H1>
-        <ContactsForm onSubmit={formSumbit} />
+        <ContactsForm onSubmit={onAddContact} />
         <H2>Contacts</H2>
-        <Filter search={search} handleChange={handleChange} />
-        {visibleContacts && (
-          <Contacts contacts={visibleContacts} deleteContact={deleteContact} />
-        )}
+        <Filter search={filter} handleChange={onFilterContact} />
+        <Contacts contacts={contacts} deleteContact={onRemoveContact} />
       </PhonebookContainer>
     </AppContainer>
   );

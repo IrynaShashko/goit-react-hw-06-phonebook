@@ -1,5 +1,4 @@
 import React from 'react';
-import { nanoid } from 'nanoid';
 import { FiHeart } from 'react-icons/fi';
 import propTypes from 'prop-types';
 import {
@@ -15,7 +14,6 @@ const Contacts = ({ contacts, deleteContact }) => {
   return (
     <ContactsList>
       {contacts.map(contact => {
-        contact.id = nanoid();
         return (
           <ContactsItem key={contact.id}>
             <FiHeart />
